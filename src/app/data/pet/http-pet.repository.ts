@@ -9,7 +9,7 @@ import { PetMapper } from './mappers/pet.mapper';
 import { PetEntity } from './entitites/pet.entity';
 
 @Injectable()
-export class BackendPetRepository extends PetRepository {
+export class HttpPetRepository extends PetRepository {
   petMapper = new PetMapper();
 
   private API_URL: string =
