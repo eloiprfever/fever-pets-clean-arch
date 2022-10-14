@@ -1,11 +1,15 @@
+import { InjectionToken } from '@angular/core';
+
 import { Observable } from 'rxjs';
 
-import { PetModel } from 'src/app/pets/domain/models/pet.model';
+import { PetModel } from '../../domain/models/pet.model';
 
-export abstract class PetStore {
+export const PET_STORE = new InjectionToken<PetStore>('PetStore');
+
+export interface PetStore {
   // selectors
-  abstract getPets(): Observable<PetModel[]>;
+  getPets(): Observable<PetModel[]>;
 
   // commands
-  abstract updatePets(pets: PetModel[]): void;
+  updatePets(pets: PetModel[]): void;
 }

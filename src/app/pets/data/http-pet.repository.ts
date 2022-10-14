@@ -9,15 +9,13 @@ import { PetModel } from '../domain/models/pet.model';
 import { PetRepository } from '../domain/repositories/pet.repository';
 
 @Injectable()
-export class HttpPetRepository extends PetRepository {
+export class HttpPetRepository implements PetRepository {
   petMapper = new PetMapper();
 
   private API_URL: string =
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
 
-  constructor(private http: HttpClient) {
-    super();
-  }
+  constructor(private http: HttpClient) {}
 
   getPets(): Observable<PetModel[]> {
     return this.http
