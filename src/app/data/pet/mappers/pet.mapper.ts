@@ -1,6 +1,6 @@
-import { Mapper } from "src/app/base/mapper";
-import { PetModel } from "src/app/pet/domain/models/pet.model";
-import { PetEntity } from "../entitites/pet.entity";
+import { Mapper } from 'src/app/base/mapper';
+import { PetModel } from 'src/app/domain/pet/models/pet.model';
+import { PetEntity } from '../entitites/pet.entity';
 
 export class PetMapper implements Mapper<PetEntity, PetModel> {
   mapFrom(param: PetEntity): PetModel {
