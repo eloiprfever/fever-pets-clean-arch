@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
@@ -22,8 +22,12 @@ import { PetRepository } from '../domain/repositories/pet.repository';
     { provide: PetRepository, useClass: HttpPetRepository },
   ],
 })
-export class PetsComponent {
+export class PetsComponent implements OnInit {
   pets$: Observable<PetViewModel[]> = this.petFacade.getPets();
 
   constructor(private petFacade: PetFacade) {}
+
+  ngOnInit(): void {
+    this.petFacade.fetchPets();
+  }
 }

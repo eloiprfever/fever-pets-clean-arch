@@ -25,7 +25,6 @@ export class PetFacade {
     this.getPetsUseCase = new GetPetsUseCase(petRepository);
     this.getPetByIdUseCase = new GetPetByIdUseCase(petRepository);
     this.createPetUseCase = new CreatePetUseCase(petRepository);
-    this.fetchPets();
   }
 
   fetchPets(): void {
