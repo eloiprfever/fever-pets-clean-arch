@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 import { map, Observable, tap } from 'rxjs';
 
-import { PetRepository } from 'src/app/pets/domain/repositories/pet.repository';
+import {
+  PetRepository,
+  PET_REPOSITORY,
+} from 'src/app/pets/domain/repositories/pet.repository';
 import { CreatePetUseCase } from 'src/app/pets/domain/usecases/create-pet.usecase';
 import { GetPetByIdUseCase } from 'src/app/pets/domain/usecases/get-pet-by-id.usecase';
 import { GetPetsUseCase } from 'src/app/pets/domain/usecases/get-pets.usecase';
 import { PetViewMapper } from '../mappers/pet-view.mapper';
 import { PetViewModel } from '../models/pet.view-model';
-import { PetStore } from '../state/pet.store';
+import { PetStore, PET_STORE } from '../state/pet.store';
 
 @Injectable()
 export class PetFacade {
@@ -19,8 +22,8 @@ export class PetFacade {
   private createPetUseCase: CreatePetUseCase;
 
   constructor(
-    private petStore: PetStore,
-    private petRepository: PetRepository
+    @Inject(PET_STORE) private petStore: PetStore,
+    @Inject(PET_REPOSITORY) private petRepository: PetRepository
   ) {
     this.getPetsUseCase = new GetPetsUseCase(petRepository);
     this.getPetByIdUseCase = new GetPetByIdUseCase(petRepository);

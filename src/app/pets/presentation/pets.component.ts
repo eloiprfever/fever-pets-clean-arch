@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 
 import { ElfPetStore } from './state/elf-pet.store';
 import { PetFacade } from './services/pet.facade';
-import { PetStore } from './state/pet.store';
+import { PET_STORE } from './state/pet.store';
 import { PetViewModel } from './models/pet.view-model';
 import { HttpPetRepository } from '../data/http-pet.repository';
-import { PetRepository } from '../domain/repositories/pet.repository';
+import { PET_REPOSITORY } from '../domain/repositories/pet.repository';
 
 @Component({
   standalone: true,
@@ -18,8 +18,8 @@ import { PetRepository } from '../domain/repositories/pet.repository';
   imports: [CommonModule],
   providers: [
     PetFacade,
-    { provide: PetStore, useClass: ElfPetStore },
-    { provide: PetRepository, useClass: HttpPetRepository },
+    { provide: PET_STORE, useClass: ElfPetStore },
+    { provide: PET_REPOSITORY, useClass: HttpPetRepository },
   ],
 })
 export class PetsComponent implements OnInit {
