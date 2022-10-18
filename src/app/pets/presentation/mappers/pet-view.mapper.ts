@@ -1,9 +1,9 @@
 import { Mapper } from 'src/app/base/mapper';
-import { PetModel } from 'src/app/domain/pet/models/pet.model';
-import { PetEntity } from '../entitites/pet.entity';
+import { PetModel } from 'src/app/pets/domain/models/pet.model';
+import { PetViewModel } from '../models/pet.view-model';
 
-export class PetMapper implements Mapper<PetEntity, PetModel> {
-  mapFrom(param: PetEntity): PetModel {
+export class PetViewMapper implements Mapper<PetModel, PetViewModel> {
+  mapFrom(param: PetModel): PetViewModel {
     return {
       id: param.id,
       name: param.name,
@@ -11,13 +11,13 @@ export class PetMapper implements Mapper<PetEntity, PetModel> {
       weight: param.weight,
       height: param.height,
       length: param.length,
-      photoUrl: param.photo_url,
+      imgUrl: param.photoUrl,
       description: param.description,
-      numberOfLives: param.number_of_lives,
+      numberOfLives: param.numberOfLives,
     };
   }
 
-  mapTo(param: PetModel): PetEntity {
+  mapTo(param: PetViewModel): PetModel {
     return {
       id: param.id,
       name: param.name,
@@ -25,9 +25,9 @@ export class PetMapper implements Mapper<PetEntity, PetModel> {
       weight: param.weight,
       height: param.height,
       length: param.length,
-      photo_url: param.photoUrl,
+      photoUrl: param.imgUrl,
       description: param.description,
-      number_of_lives: param.numberOfLives,
+      numberOfLives: param.numberOfLives,
     };
   }
 }

@@ -7,8 +7,8 @@ import { ElfPetStore } from './state/elf-pet.store';
 import { PetFacade } from './services/pet.facade';
 import { PetStore } from './state/pet.store';
 import { PetViewModel } from './models/pet.view-model';
-import { PetRepository } from 'src/app/domain/pet/repositories/pet.repository';
-import { HttpPetRepository } from 'src/app/data/pet/http-pet.repository';
+import { HttpPetRepository } from '../data/http-pet.repository';
+import { PetRepository } from '../domain/repositories/pet.repository';
 
 @Component({
   standalone: true,

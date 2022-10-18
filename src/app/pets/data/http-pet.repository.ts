@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 
 import { map, Observable } from 'rxjs';
 
-import { PetModel } from '../../domain/pet/models/pet.model';
-import { PetRepository } from '../../domain/pet/repositories/pet.repository';
 import { PetMapper } from './mappers/pet.mapper';
 import { PetEntity } from './entitites/pet.entity';
+import { PetModel } from '../domain/models/pet.model';
+import { PetRepository } from '../domain/repositories/pet.repository';
 
 @Injectable()
 export class HttpPetRepository extends PetRepository {

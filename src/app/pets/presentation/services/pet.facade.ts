@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { map, Observable, tap } from 'rxjs';
 
-import { PetModel } from 'src/app/domain/pet/models/pet.model';
-import { PetRepository } from 'src/app/domain/pet/repositories/pet.repository';
-import { CreatePetUseCase } from 'src/app/domain/pet/usecases/create-pet.usecase';
-import { GetPetByIdUseCase } from 'src/app/domain/pet/usecases/get-pet-by-id.usecase';
-import { GetPetsUseCase } from 'src/app/domain/pet/usecases/get-pets.usecase';
+import { PetRepository } from 'src/app/pets/domain/repositories/pet.repository';
+import { CreatePetUseCase } from 'src/app/pets/domain/usecases/create-pet.usecase';
+import { GetPetByIdUseCase } from 'src/app/pets/domain/usecases/get-pet-by-id.usecase';
+import { GetPetsUseCase } from 'src/app/pets/domain/usecases/get-pets.usecase';
 import { PetViewMapper } from '../mappers/pet-view.mapper';
 import { PetViewModel } from '../models/pet.view-model';
 import { PetStore } from '../state/pet.store';

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { PetModel } from 'src/app/domain/pet/models/pet.model';
+import { PetModel } from 'src/app/pets/domain/models/pet.model';
 
 export abstract class PetStore {
   // selectors
