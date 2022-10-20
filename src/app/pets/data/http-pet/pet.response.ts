@@ -1,4 +1,4 @@
-export interface PetEntity {
+export interface PetResponse {
   id: number;
   name: string;
   kind: string;

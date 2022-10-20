@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { map, Observable } from 'rxjs';
 
-import { PetMapper } from './mappers/pet.mapper';
-import { PetEntity } from './entitites/pet.entity';
-import { PetModel } from '../domain/models/pet.model';
-import { PetRepository } from '../domain/repositories/pet.repository';
+import { PetAdapter } from './pet.adapter';
+import { PetResponse } from './pet.response';
+import { PetModel } from '../../domain/models/pet.model';
+import { PetService } from '../../domain/repositories/pet.service';
 
 @Injectable()
-export class HttpPetRepository implements PetRepository {
-  petMapper = new PetMapper();
+export class HttpPetService implements PetService {
+  petMapper = new PetAdapter();
 
   private API_URL: string =
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
@@ -19,19 +19,19 @@ export class HttpPetRepository implements PetRepository {
 
   getPets(): Observable<PetModel[]> {
     return this.http
-      .get<PetEntity[]>(this.API_URL)
+      .get<PetResponse[]>(this.API_URL)
       .pipe(map((pets) => pets.map((pet) => this.petMapper.mapFrom(pet))));
   }
 
   getPetById(id: number): Observable<PetModel> {
     return this.http
-      .get<PetEntity>(`${this.API_URL}/${id}`)
+      .get<PetResponse>(`${this.API_URL}/${id}`)
       .pipe(map((pet) => this.petMapper.mapFrom(pet)));
   }
 
   createPet(pet: PetModel): Observable<PetModel> {
     return this.http
-      .post<PetEntity>(`${this.API_URL}`, { ...this.petMapper.mapTo(pet) })
+      .post<PetResponse>(`${this.API_URL}`, { ...this.petMapper.mapTo(pet) })
       .pipe(map((pet) => this.petMapper.mapFrom(pet)));
   }
 }

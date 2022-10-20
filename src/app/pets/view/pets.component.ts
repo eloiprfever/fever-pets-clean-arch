@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { ElfPetStore } from './state/elf-pet.store';
-import { PetFacade } from './services/pet.facade';
-import { PET_STORE } from './state/pet.store';
-import { PetViewModel } from './models/pet.view-model';
-import { HttpPetRepository } from '../data/http-pet.repository';
-import { PET_REPOSITORY } from '../domain/repositories/pet.repository';
+import { HttpPetService } from '../data/http-pet/http-pet.service';
+import { PET_REPOSITORY } from '../domain/repositories/pet.service';
+import { PetFacade } from '../presentation/facades/pet.facade';
+import { PetViewModel } from '../presentation/facades/pet.view-model';
+import { ElfPetStore } from '../presentation/state/elf-pet.store';
+import { PET_STORE } from '../presentation/state/pet.store';
 
 @Component({
   standalone: true,
@@ -19,7 +19,7 @@ import { PET_REPOSITORY } from '../domain/repositories/pet.repository';
   providers: [
     PetFacade,
     { provide: PET_STORE, useClass: ElfPetStore },
-    { provide: PET_REPOSITORY, useClass: HttpPetRepository },
+    { provide: PET_REPOSITORY, useClass: HttpPetService },
   ],
 })
 export class PetsComponent implements OnInit {
