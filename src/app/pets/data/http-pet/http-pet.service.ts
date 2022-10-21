@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { map, Observable } from 'rxjs';
@@ -8,7 +7,6 @@ import { PetResponse } from './pet.response';
 import { PetModel } from '../../domain/models/pet.model';
 import { PetService } from '../../domain/repositories/pet.service';
 
-@Injectable()
 export class HttpPetService implements PetService {
   petMapper = new PetAdapter();
 

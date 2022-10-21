@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { PET_FACADE } from '../pet.tokens';
+import { PET_FACADE } from '../pet.di';
 import { PetFacade } from '../presentation/facades/pet.facade';
 import { PetViewModel } from '../presentation/facades/pet.view-model';
 
