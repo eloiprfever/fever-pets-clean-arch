@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { PetConfigModule, PET_FACADE } from '../pet-config.module';
+import { PET_FACADE } from '../pet.tokens';
 import { PetFacade } from '../presentation/facades/pet.facade';
 import { PetViewModel } from '../presentation/facades/pet.view-model';
 
@@ -12,7 +12,7 @@ import { PetViewModel } from '../presentation/facades/pet.view-model';
   selector: 'app-pets',
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.scss'],
-  imports: [CommonModule, PetConfigModule],
+  imports: [CommonModule],
 })
 export class PetsComponent implements OnInit {
   pets$: Observable<PetViewModel[]> = this.petFacade.getPets();
