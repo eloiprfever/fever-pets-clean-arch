@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { map, Observable } from 'rxjs';
 
-import { PetAdapter } from './pet.adapter';
-import { PetResponse } from './pet.response';
+import { HttpPetAdapter } from './http-pet.adapter';
+import { HttpPetResponse } from './http-pet.response';
 import { PetModel } from '../../domain/models/pet.model';
 import { PetService } from '../../domain/repositories/pet.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class HttpPetService implements PetService {
-  petMapper = new PetAdapter();
+  private petAdapter = new HttpPetAdapter();
 
   private API_URL: string =
     'https://my-json-server.typicode.com/Feverup/fever_pets_data/pets';
@@ -19,19 +19,19 @@ export class HttpPetService implements PetService {
 
   getPets(): Observable<PetModel[]> {
     return this.http
-      .get<PetResponse[]>(this.API_URL)
-      .pipe(map((pets) => pets.map((pet) => this.petMapper.mapFrom(pet))));
+      .get<HttpPetResponse[]>(this.API_URL)
+      .pipe(map((pets) => pets.map((pet) => this.petAdapter.mapFrom(pet))));
   }
 
   getPetById(id: number): Observable<PetModel> {
     return this.http
-      .get<PetResponse>(`${this.API_URL}/${id}`)
-      .pipe(map((pet) => this.petMapper.mapFrom(pet)));
+      .get<HttpPetResponse>(`${this.API_URL}/${id}`)
+      .pipe(map((pet) => this.petAdapter.mapFrom(pet)));
   }
 
   createPet(pet: PetModel): Observable<PetModel> {
     return this.http
-      .post<PetResponse>(`${this.API_URL}`, { ...this.petMapper.mapTo(pet) })
-      .pipe(map((pet) => this.petMapper.mapFrom(pet)));
+      .post<HttpPetResponse>(`${this.API_URL}`, { ...this.petAdapter.mapTo(pet) })
+      .pipe(map((pet) => this.petAdapter.mapFrom(pet)));
   }
 }

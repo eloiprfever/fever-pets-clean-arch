@@ -1,9 +1,9 @@
 import { Mapper } from 'src/app/base/mapper';
 import { PetModel } from 'src/app/pets/domain/models/pet.model';
-import { PetResponse } from './pet.response';
+import { HttpPetResponse } from './http-pet.response';
 
-export class PetAdapter implements Mapper<PetResponse, PetModel> {
-  mapFrom(param: PetResponse): PetModel {
+export class HttpPetAdapter implements Mapper<HttpPetResponse, PetModel> {
+  mapFrom(param: HttpPetResponse): PetModel {
     return {
       id: param.id,
       name: param.name,
@@ -17,7 +17,7 @@ export class PetAdapter implements Mapper<PetResponse, PetModel> {
     };
   }
 
-  mapTo(param: PetModel): PetResponse {
+  mapTo(param: PetModel): HttpPetResponse {
     return {
       id: param.id,
       name: param.name,

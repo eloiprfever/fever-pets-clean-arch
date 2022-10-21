@@ -17,7 +17,7 @@ const petStore = createStore(
   })
 );
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ElfPetStore implements PetStore {
   getPets(): Observable<PetModel[]> {
     return petStore.pipe(select((state) => state.pets));
