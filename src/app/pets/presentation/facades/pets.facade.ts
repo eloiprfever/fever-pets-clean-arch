@@ -29,20 +29,14 @@ export class PetsFacade {
   }
 
   getPets(): Observable<PetViewModel[]> {
-    return this.petStore
-      .getPets()
-      .pipe(map((pets) => pets.map(this.petViewMapper.mapFrom)));
+    return this.petStore.getPets().pipe(map((pets) => pets.map(this.petViewMapper.mapFrom)));
   }
 
   getPetById(id: number): Observable<PetViewModel> {
-    return this.getPetByIdUseCase
-      .execute(id)
-      .pipe(map(this.petViewMapper.mapFrom));
+    return this.getPetByIdUseCase.execute(id).pipe(map(this.petViewMapper.mapFrom));
   }
 
   createPet(pet: PetViewModel): Observable<PetViewModel> {
-    return this.createPetUseCase
-      .execute(this.petViewMapper.mapTo(pet))
-      .pipe(map(this.petViewMapper.mapFrom));
+    return this.createPetUseCase.execute(this.petViewMapper.mapTo(pet)).pipe(map(this.petViewMapper.mapFrom));
   }
 }
