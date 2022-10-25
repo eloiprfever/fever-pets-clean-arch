@@ -3,8 +3,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { PET_FACADE } from '../pet.di';
-import { PetFacade } from '../presentation/facades/pet.facade';
+import { PETS_FACADE } from '../pet.di';
+import { PetsFacade } from '../presentation/facades/pets.facade';
 import { PetViewModel } from '../presentation/facades/pet.view-model';
 
 @Component({
@@ -17,7 +17,7 @@ import { PetViewModel } from '../presentation/facades/pet.view-model';
 export class PetsComponent implements OnInit {
   pets$: Observable<PetViewModel[]> = this.petFacade.getPets();
 
-  constructor(@Inject(PET_FACADE) private petFacade: PetFacade) {}
+  constructor(@Inject(PETS_FACADE) private petFacade: PetsFacade) {}
 
   ngOnInit(): void {
     this.petFacade.fetchPets();

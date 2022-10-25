@@ -8,7 +8,7 @@ import { PetViewMapper } from './pet-view.adapter';
 import { PetViewModel } from './pet.view-model';
 import { PetStore } from '../state/pet.store';
 
-export class PetFacade {
+export class PetsFacade {
   petViewMapper: PetViewMapper = new PetViewMapper();
 
   private getPetsUseCase: GetPetsUseCase;
